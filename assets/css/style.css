@@ -6,17 +6,9 @@
 
 }
 
-:root {
-
-    --hue-neutral: 200;
-    --hue-wrong: 0;
-    --hue-correct: 145;
-
-}
 
 
 body{
-
     padding: 0;
     margin: 0;
     display: flex;
@@ -27,6 +19,70 @@ body{
     align-items: center;
 
     background-color: blue;
-    
 }
 
+body.correct{
+    background-color: green;
+}
+
+body.wrong{
+    background-color :red;
+}
+
+.container{
+
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+
+    font-size: 30px;
+}
+
+.btn-grid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+.btn{
+    background-color: lightskyblue;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+    outline: none;
+
+    font-size: 25px;
+}
+
+.btn:hover{
+    border-color: black;
+}
+
+.btn.correct{
+    background-color: green;
+    color: black;
+}
+.btn.wrong{
+    background-color: red;
+}
+
+.start-btn, .next.btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+
+}
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.hide{
+    display: none;
+}
