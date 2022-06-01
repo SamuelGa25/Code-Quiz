@@ -14,29 +14,95 @@
 
     <body>
 
-        <div class="container">
 
-            <div id="question-container" class="hide">
-                <div id="question">Question</div>
-                <div id="answer-buttons" class="btn-grid"></div>
-                
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
+        <!-- start button quiz -->
+        <div class="start_btn">
+            <button>Start</button>
+        </div>
 
+
+        <!-- Rules of the quiz -->
+        <div class="info_box">
+        
+            <div class="info_title">
+                <h2><span>Rules of this Quiz</span></h2>
             </div>
+
+            <div class="info_list">
+                <div class="info">1. You have <span>15 seconds</span> per each question.</div>
+                <div class="info">2. Once Answer the question, you can't reselect</div>
+                <div class="info">3. When you start the quiz, you can't go back</div>
+                <div class="info">4. Every correct answer is 100 points, GOOD LUCK!!</div>
+            </div>
+
 
             <div class="controls">
-
-                <button id="start-btn" class="start-btn btn">Start</button>
-                <button id="next-btn" class="next-btn btn hide">Next</button>
-
+                    <button class="quit">Exit</button>
+                    <button class="restart">Next</button>
             </div>
+
 
         </div>
 
+
+        <!-- Quiz box container -->
+        <div class="container">
+
+            <header>
+                <div class="title">Programming Language Quiz</div>
+                <div class="timer">
+
+                </div>
+
+            </header>
+
+
+            <section>
+                <!-- Question title-->
+                <div class="question"><span>What does HTML stand for?</span></div>
+
+
+                <!-- Multiple Choice -->
+                <div class="multiple_choice"></div>
+
+
+            </section>
+           
+            <!-- quiz footer -->
+            <footer>
+                <div class="final_score"></div>
+
+                <button class="next_btn">Next Question</button>
+            </footer>
+
+        </div>
+
+
+        <!-- Result Box -->
+        <div class="result">
+            <div class="completed_text">You've completed the Quiz!</div>
+
+            <div class="score"></div>
+
+            <div class="button">
+                <button class="final_btn">See Results</button>
+            </div>
+
+
+            
+        </div>
+
+        <!-- High Score box -->
+        <div class="highscores">
+
+
+        </div>
+
+
+
+
     </body>
+
 
     <script src="./assets/js/script.js"></script>
 </html>

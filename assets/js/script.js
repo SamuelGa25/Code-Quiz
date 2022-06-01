@@ -1,5 +1,7 @@
 
-var startButton = document.getElementById('start-btn');
+var startButton = document.getElementById(".start_btn button");
+
+var info_box = document.getElementById(".info_box");
 
 var nextButton = document.getElementById('next-btn');
 
@@ -16,23 +18,53 @@ startButton.addEventListener('click', startGame);
 
 nextButton.addEventListener('click', ()=>{
     currentQuestionIndex++
-    showQuestion()
+    setNextQuestion();
 })
-
-
 
 
 var questions = [
     {
-        question: 'What is 2+2?',
+        question: 'What does HTML stand for?',
         answers:[
-            {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: 'Hyper text Preprocessor', correct: true},
+            {text: 'Hyper Text Markup Language', correct: false},
+            {text: 'Hyper Text Multiple Language', correct: false},
+            {text: 'Hyper Text Multi Language', correct: false}
             
         ]
-    }
-]
+    },
+    {
+        question: ' Arrays in JavaScript can be used to store',
+        answers:[
+            {text: 'Numbers and strings', correct: false},
+            {text: 'other arrays', correct: false},
+            {text: 'booleans', correct: false},
+            {text: 'all of the above', correct: true}
+            
+        ]
+    },
+    {
+        question: ' What does CSS stand for?',
+        answers:[
+            {text: 'Hyper text Preprocessor', correct: false},
+            {text: 'Computer Style Sheet', correct: false},
+            {text: 'Hyper Text Multiple Language', correct: false},
+            {text: 'Cascading Style Sheet', correct: true}
+            
+        ]
+    },
+    {
+        question: ' The condition in an if/else statement is enclosed with ______',
+        answers:[
+            {text: 'Quotes', correct: false},
+            {text: 'Curly Brackets', correct: false},
+            {text: 'Parenthesis', correct: true},
+            {text: 'Square Brackets', correct: true}
+            
+        ]
+    },
 
+]
 
 
 function startGame(){
@@ -104,7 +136,7 @@ function ClearStatusClass(element){
 
 function resetState(){
     ClearStatusClass(document.body)
-    
+
     nextButton.classList.add('hide')
     while(answerButtonsElement.firstChild){
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
