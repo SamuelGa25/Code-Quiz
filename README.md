@@ -8,6 +8,9 @@ SO THAT I can gauge my progress compared to my peers
 
 
 ## Built With
+*HTML
+*CSS
+*JavaScript
 
 
 ## Mock-Up
@@ -17,3 +20,4 @@ SO THAT I can gauge my progress compared to my peers
 
 
 ## Contributor
+Samuel Garcia
