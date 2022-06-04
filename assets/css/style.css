@@ -204,23 +204,27 @@ body{
 .container section .multiple_choice .choice:hover{
     color: black;
     background: lightblue;
-    border-color: aliceblue;
 
 }
 .container section .multiple_choice .choice:last-child{
     margin-bottom: 0px;
 }
-
+ 
 .multiple_choice .choice.correct{
     color: green;
-    background: white;
-    border-color: white;
+    background: lightgreen;
 }
 .multiple_choice .choice.incorrect{
-    color: lightcoral;
-    background: white;
-    border-color: white;
+    color: red;
+    background: lightcoral;
 }
+
+.multiple_choice .choice.disabled{
+    pointer-events: none;
+}
+
+
+
 .container footer{
 
     height: 60px;

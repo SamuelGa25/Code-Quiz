@@ -36,15 +36,16 @@ begin_button.onclick = ()=>{
 
     console.log("quiz started");
     showQuestion(0);
+    questionCounter(1);
 
 }
-
 
 //defining the variables for the math part
 var ques_count= 0;
 var ques_number = 1;
 var userScore = 0;
 var counter;
+
 //value for time 
 var timeAmount = 15;
 
@@ -53,38 +54,65 @@ var timeAmount = 15;
 //if Next Question button clicked
 next_question.onclick=()=>{
 
-    question_count++;
-    question_number++;
+    if (ques_count < questions.length -1){
+
+        ques_count++;
+        ques_number++;
+        
+        showQuestion(ques_count);
+        questionCounter(ques_number);
+
+        clearInterval(counter);
+        
+        next_question.style.display = "none";
+
+    }else{
+        clearInterval(counter);
+        console.log("Quiz finished!")
+        showResult();
+    }
+    
+}
+
+//From result box
+//If Try Again button
+
+restart_button.onclick = ()=>{
 
     container.classList.add("activeQuiz");
     result.classList.remove("activeResult");
 
     var question_count = 0;
     var question_number = 1;
-
+    
     showQuestion(question_count);
     questionCounter(question_number);
-
     clearInterval(counter);
 
     next_question.style.display = "none";
 
-
-
 }
+
+//From result box
+//if exit button clicked
+exit_quiz.onclick=()=>{
+    window.location.reload();
+}
+
+
 
 //functionality for the quiz container, showing the question.  
 function showQuestion(index){
     var ques_text = document.querySelector(".question");
-
-    var question_tag = '<div class="que_text">'+questions[index].number+"."+questions[index].question+'</div>';
+    
+    var question_tag = '<div class="question">'+questions[index].number+"."+questions[index].question+'</div>';
     var choice_tag = '<div class="choice">'+questions[index].choices[0]+'</div>'
                     +'<div class="choice">'+questions[index].choices[1]+'</div>'
                     +'<div class="choice">'+questions[index].choices[2]+'</div>'
                     +'<div class="choice">'+questions[index].choices[3]+'</div>';
 
     ques_text.innerHTML = question_tag;
-    choice_tag.innerHTML = multiple_choice;
+    multiple_choice.innerHTML = choice_tag;
     
     var choice = multiple_choice.querySelectorAll(".choice");
     for (var i=0; i< choice.length; i++){
@@ -94,14 +122,6 @@ function showQuestion(index){
 
 }
 
-function questionCounter(index){
-    var question_count = container.querySelector(".question_count");
-
-    var count_question = '<p>' +index+'</p> of<p>'+questions.length+' Questions</p>';
-
-    question_count.innerHTML = count_question;
-    
-}
 
 
 function choiceSelected(answer){
@@ -118,16 +138,15 @@ function choiceSelected(answer){
         userScore +=100;
         console.log("CORRECT!")
         console.log("Current Score: "+userScore);
-
         answer.classList.add("correct");
 
     }else{
         //if the answer is wrong don't add to the score.
         console.log("INCORRECT!");
-        answer.classList.add("incorrect!");
+        answer.classList.add("incorrect");
 
         //if incorrect, show the right answer!
-        for (let i=0; i<allChoices; i++){
+        for (var i=0; i<allChoices; i++){
             if (multiple_choice.children[i].textContent == correctAnswer){
                 multiple_choice.children[i].setAttribute("class","choice correct");
             }
@@ -141,18 +160,41 @@ function choiceSelected(answer){
 
 }
 
-function showResult(){
-    rules_box.classList.remove("activeInfo");
-    container.classList.remove("activeInfo");
-    result.classList.add("activeInfo");
+function questionCounter(index){
+    var question_count = container.querySelector(".question_count");
 
-    var completed_text = result.querySelector(".completed_text")
+    var count_question = +index+'</p> of<p>'+questions.length;
 
-    // if(user)
-
+    question_count.innerHTML = count_question;
+    
 }
 
+function showResult(){
+    rules_box.classList.remove("activeInfo");
+    container.classList.remove("activeQuiz");
+    result.classList.add("activeResult");
 
+    var completed_text = result.querySelector(".result_text");
+
+    //if statement result whether the user obtained a big or low grade
+    if (userScore >200){
+        var scoreText = '<p> CONGRATS!! :D , your score is: '+userScore+' / 400</p>'
+        completed_text.innerHTML = scoreText;
+        console.log(scoreText);
+    }
+    else if(userScore >100){
+        var scoreText = '<p> SORRY :( , your score is: '+userScore+' / 400</p>'
+        completed_text.innerHTML = scoreText;
+
+        console.log(scoreText);
+    }else{
+        var scoreText = '<p> SORRY :( , your score is: '+userScore+' / 400</p>'
+        completed_text.innerHTML = scoreText;
+
+        console.log(scoreText);
+    }
+
+}
 
 
 
@@ -203,9 +245,9 @@ var questions = [
             '3. Parenthesis', 
             '4. Square Brackets', 
         ]
-    },
+    }
 
-]
+];
 
 
 
