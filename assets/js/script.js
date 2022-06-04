@@ -10,11 +10,18 @@ var begin_button = rules_box.querySelector(".controls .start");
 var container = document.querySelector(".container");
 var next_question = container.querySelector('.next_btn');
 var multiple_choice = document.querySelector(".multiple_choice");
+//time container quiz
+var timeCounter  = container.querySelector(".timer .timer_sec");
+var timeOUT = container.querySelector("header .time_text");
+
 
 //defining the result box
 var result = document.querySelector(".result");
 var restart_button = result.querySelector(".controls .restart");
-var exit_quiz = result.querySelector(".controls .final_btn");
+var highScore_btn = result.querySelector(".result .highScore_btn")
+
+
+// var exit_quiz = result.querySelector(".controls .final_btn");
 
 //if start button clicked
 start_button.onclick = ()=>{
@@ -37,6 +44,7 @@ begin_button.onclick = ()=>{
     console.log("quiz started");
     showQuestion(0);
     questionCounter(1);
+    timing(timeAmount);
 
 }
 
@@ -61,8 +69,9 @@ next_question.onclick=()=>{
         
         showQuestion(ques_count);
         questionCounter(ques_number);
-
         clearInterval(counter);
+        timing(timeAmount);
+
         
         next_question.style.display = "none";
 
@@ -79,25 +88,43 @@ next_question.onclick=()=>{
 
 restart_button.onclick = ()=>{
 
-    container.classList.add("activeQuiz");
     result.classList.remove("activeResult");
+    container.classList.add("activeQuiz");
 
-    var question_count = 0;
-    var question_number = 1;
-    
-    showQuestion(question_count);
-    questionCounter(question_number);
+    var ques_count = 0;
+    var ques_number = 1;
+    var timeAmount = 15;
+    var counter;
+
+
+    //for some reason it doesnt work correclty after pressing try again.
     clearInterval(counter);
+    showQuestion(ques_count);
+    questionCounter(ques_number);
+    timing(timeAmount);
+
+    clearInterval(counter);
+    
 
     next_question.style.display = "none";
+    timeOUT.textContent = "Time Left";
 
 }
+
+//From result box 
+//if highscore cliked
+highScore_btn.onclick = ()=>{
+
+    container.classList.remove("activeQuiz");
+
+}
+
 
 //From result box
 //if exit button clicked
-exit_quiz.onclick=()=>{
-    window.location.reload();
-}
+// exit_quiz.onclick=()=>{
+//     window.location.reload();
+// }
 
 
 
@@ -117,6 +144,48 @@ function showQuestion(index){
     var choice = multiple_choice.querySelectorAll(".choice");
     for (var i=0; i< choice.length; i++){
         choice[i].setAttribute('onclick', "choiceSelected(this)");
+
+    }
+
+}
+
+function timing(time){
+
+    counter = setInterval(timer, 1000);
+
+    function timer(){
+        timeCounter.textContent = time;
+        time --;
+        
+        if (time <9){
+            var addZero = timeCounter.textContent;
+            timeCounter.textContent = 0+addZero;
+        }
+
+        if(time <0){
+            clearInterval(counter);
+            timeCounter.textContent = "00";
+
+            timeOUT.textContent = "Time Off";
+            console.log("Time OUT");
+
+            //if time out, show the answer
+            var correctAnswer = questions[ques_count].answer;
+            var allChoices = multiple_choice.children.length;
+
+            for (var i=0; i<allChoices; i++){
+                //if it time out show correct answer
+                if (multiple_choice.children[i].textContent == correctAnswer){
+                    multiple_choice.children[i].setAttribute("class", "option correct");
+                }
+            }
+            //if it time out disble everything 
+            for (var i =0; i<allChoices; i++){
+                multiple_choice.children[i].classList.add("disabled")
+            }
+            next_question.style.display = "block";
+
+        }
 
     }
 

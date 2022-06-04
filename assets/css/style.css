@@ -1,5 +1,4 @@
 
-
 *{
     margin: 0;
     padding: 0;
@@ -135,19 +134,15 @@ body{
 .container{
 
     width: 500px;
-   
     flex-direction: flex;
-
     background:white;
-
     border-radius: 5px;
     box-shadow: 0 0 10px 2px;
-
     font-size: 30px;
 
+    opacity: 0; 
     transform: translate(-50%, -40%);
 
-    opacity: 0;
     pointer-events: none; 
 
 }
@@ -161,7 +156,7 @@ body{
     display: flex;
     align-items: center;
 
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 2px solid lightskyblue;
 
 
     justify-content: space-between;
@@ -170,8 +165,46 @@ body{
 
 .container header .title{
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 600px;
 }
+
+.container header .timer{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+    height: 45px;
+    background: white;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    padding: 0 8px;
+}
+.container header .timer .time_text{
+    font-weight: 400;
+    font-size: 18px;
+    user-select: none;
+
+
+}
+.container header .timer .timer_sec{
+    font-size: 20px;
+    font-weight: 500;
+    background-color: lightblue;
+    height: 30px;
+    width: 45px;
+    color: black;
+
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    user-select: none;
+
+}
+
+
+
+
 
 .container section{
     padding: 25px 30px 20px 30px;
