@@ -12,13 +12,15 @@ var next_question = container.querySelector('.next_btn');
 var multiple_choice = document.querySelector(".multiple_choice");
 //time container quiz
 var timeCounter  = container.querySelector(".timer .timer_sec");
-var timeOUT = container.querySelector("header .time_text");
+var timeOut = container.querySelector(".timer .time_text");
 
 
 //defining the result box
 var result = document.querySelector(".result");
 var restart_button = result.querySelector(".controls .restart");
-var highScore_btn = result.querySelector(".result .highScore_btn")
+var exit_quiz = result.querySelector(".result .exit_quiz");
+
+var initial_btn =  result.querySelector(".initial .initial_btn");
 
 
 // var exit_quiz = result.querySelector(".controls .final_btn");
@@ -111,22 +113,22 @@ restart_button.onclick = ()=>{
 
 }
 
-//From result box 
-//if highscore cliked
-highScore_btn.onclick = ()=>{
 
-    container.classList.remove("activeQuiz");
+
+// From result box
+// if exit button clicked
+exit_quiz.onclick=()=>{
+    window.location.reload();
+}
+
+initial_btn.onclick= ()=> {
+
+    var myInitial = document.getElementById("initial").value;
+    console.log("Thank You for playing!! =D "+myInitial);
 
 }
 
-
-//From result box
-//if exit button clicked
-// exit_quiz.onclick=()=>{
-//     window.location.reload();
-// }
-
-
+    
 
 //functionality for the quiz container, showing the question.  
 function showQuestion(index){
@@ -166,7 +168,7 @@ function timing(time){
             clearInterval(counter);
             timeCounter.textContent = "00";
 
-            timeOUT.textContent = "Time Off";
+            timeOut.textContent = "Time Off";
             console.log("Time OUT");
 
             //if time out, show the answer
@@ -238,6 +240,9 @@ function questionCounter(index){
     
 }
 
+
+
+
 function showResult(){
     rules_box.classList.remove("activeInfo");
     container.classList.remove("activeQuiz");
@@ -262,10 +267,9 @@ function showResult(){
 
         console.log(scoreText);
     }
-
+    
 }
-
-
+    
 
 //An array and passing the number of questions, choices and answers
 var questions = [

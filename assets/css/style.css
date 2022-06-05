@@ -178,11 +178,14 @@ body{
     background: white;
     border: 2px solid lightblue;
     border-radius: 5px;
-    padding: 0 8px;
+    padding: 0 10px;
+
 }
+
 .container header .timer .time_text{
+
     font-weight: 400;
-    font-size: 18px;
+    font-size: 20px;
     user-select: none;
 
 
@@ -201,9 +204,6 @@ body{
     user-select: none;
 
 }
-
-
-
 
 
 .container section{
@@ -308,37 +308,95 @@ footer .next_btn:hover{
 }
 
 .result{
-    background: white;
-    width: 450px;
+    
     padding: 25px 30px;
-    border-radius: 5px;
     display: flex;
-
     flex-direction: column;
-
     text-align: center;
     align-items: center;
 
-    opacity: 0;
-    pointer-events: none;
+    width: 500px;
+    flex-direction: flex;
+    background:white;
+    border-radius: 5px;
+   
+    font-size: 30px;
 
+    opacity: 0; 
     transform: translate(-50%, -40%);
+
+    pointer-events: none; 
+
 
 }
 
-.result .completed_text{
+.result header .completed_text{
+    display: flex;
+    padding: 15px;
+
     font-size: 20px;
     font-weight: 500;
     color: darkblue
 }
+.result section .result_text{
+    display: flex;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
 
 
-.result .controls{
+}
+
+.result section .initial{
+
+    margin: 0 10px;
+    display: flex;
+    
+    padding: 5px;
+    font-size: 20px;
+    flex-direction: initial;
+
+    padding: 20px;
+
+}
+
+.result section .initial label{
+    padding: 3px;
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.result section .initial button{
+
+    margin: 0 10px;
+
+    border: 3px solid lightskyblue; 
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+    
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+.result section .initial button:hover{
+    background: lightblue;
+}
+
+
+
+.result footer .controls{
     display: flex;
     margin: 20px 0;
 
 }
-.result .controls button{
+.result footer .controls button{
     margin: 0 10px;
     height: 40px;
     padding: 0 20px;
@@ -353,10 +411,11 @@ footer .next_btn:hover{
     color: black;
     font-size: 16px;
     font-weight: 500;
+
     cursor: pointer;
 
 }
-.result .controls button:hover{
+.result footer .controls button:hover{
     background: lightblue;
 }
 
